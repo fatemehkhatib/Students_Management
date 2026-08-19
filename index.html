@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>سامانه مدیریت دانشجویان</title>
+<link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,12 +14,12 @@
   <h2>ورود دانشجو</h2>
   <form id="login-form">
     <div>
-      <label for="username">نام کاربری (شماره دانشجویی):</label>
-      <input type="text" id="username" required>
+      <label for="username">نام کاربری (شماره دانشجویی)</label>
+      <input type="text" id="username" autocomplete="username" required>
     </div>
     <div>
-      <label for="password">رمز عبور (شماره دانشجویی):</label>
-      <input type="password" id="password" required>
+      <label for="password">رمز عبور (شماره دانشجویی)</label>
+      <input type="password" id="password" autocomplete="current-password" required>
     </div>
     <button type="submit">ورود</button>
     <p id="login-error" style="display:none;">نام کاربری یا رمز عبور اشتباه است. لطفاً دوباره تلاش کنید.</p>
@@ -29,59 +30,88 @@
 <div id="page-main" style="display:none;">
   <h2>صفحه اصلی</h2>
   <p>خوش آمدید، <span id="main-welcome-name"></span></p>
-  <button id="btn-goto-profile">مشخصات دانشجو</button>
-  <button id="btn-goto-units">واحد ها</button>
-  <button id="btn-goto-transcript">کارنامه</button>
-  <br><br>
+
+  <div class="menu-grid">
+    <button id="btn-goto-profile" class="menu-card">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6.4 7-6.4s7 2.8 7 6.4"/></svg>
+      <span>مشخصات دانشجو</span>
+    </button>
+    <button id="btn-goto-units" class="menu-card">
+      <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="4.5" rx="1"/><rect x="4" y="10.2" width="16" height="4.5" rx="1"/><rect x="4" y="16.4" width="10" height="4.5" rx="1"/></svg>
+      <span>واحد ها</span>
+    </button>
+    <button id="btn-goto-transcript" class="menu-card">
+      <svg viewBox="0 0 24 24"><path d="M6 3.5h9l4 4V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"/><path d="M14.5 3.5V8h4.3"/><path d="M8.2 13h7.2M8.2 16.2h7.2"/></svg>
+      <span>کارنامه</span>
+    </button>
+  </div>
+
   <button id="btn-logout">خروج از حساب</button>
 </div>
 
 <!-- ===================== Student Profile Page ===================== -->
 <div id="page-profile" style="display:none;">
-  <h2>مشخصات دانشجو</h2>
-  <table border="1">
-    <tr><td>نام و نام خانوادگی</td><td id="profile-fullname"></td></tr>
-    <tr><td>رشته تحصیلی</td><td id="profile-major"></td></tr>
-    <tr><td>نوبت</td><td id="profile-shift"></td></tr>
-    <tr><td>شماره دانشجویی</td><td id="profile-id"></td></tr>
-  </table>
-  <br>
-  <button class="btn-back">بازگشت به صفحه اصلی</button>
+  <div class="page-card">
+    <h2>
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6.4 7-6.4s7 2.8 7 6.4"/></svg>
+      مشخصات دانشجو
+    </h2>
+    <table border="1">
+      <tr><td>نام و نام خانوادگی</td><td id="profile-fullname"></td></tr>
+      <tr><td>رشته تحصیلی</td><td id="profile-major"></td></tr>
+      <tr><td>نوبت</td><td id="profile-shift"></td></tr>
+      <tr><td>شماره دانشجویی</td><td id="profile-id"></td></tr>
+    </table>
+    <button class="btn-back">بازگشت به صفحه اصلی</button>
+  </div>
 </div>
 
 <!-- ===================== Units page ===================== -->
 <div id="page-units" style="display:none;">
-  <h2>واحد ها</h2>
-  <table border="1" id="units-table">
-    <thead>
-      <tr><th>ترم</th><th>تعداد واحد گذرانده در این ترم</th></tr>
-    </thead>
-    <tbody id="units-table-body">
-    </tbody>
-  </table>
-  <br>
-  <div id="units-remaining-box">
-    <p>مجموع واحد گذرانده: <span id="units-passed-total"></span></p>
-    <p>واحد های باقی مانده: <span id="units-remaining"></span></p>
+  <div class="page-card">
+    <h2>
+      <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="4.5" rx="1"/><rect x="4" y="10.2" width="16" height="4.5" rx="1"/><rect x="4" y="16.4" width="10" height="4.5" rx="1"/></svg>
+      واحد ها
+    </h2>
+    <table border="1" id="units-table">
+      <thead>
+        <tr><th>ترم</th><th>تعداد واحد گذرانده در این ترم</th></tr>
+      </thead>
+      <tbody id="units-table-body">
+      </tbody>
+    </table>
+
+    <div id="units-remaining-box">
+      <p>مجموع واحد گذرانده<span id="units-passed-total"></span></p>
+      <p>واحد های باقی مانده<span id="units-remaining"></span></p>
+    </div>
+
+    <button class="btn-back">بازگشت به صفحه اصلی</button>
   </div>
-  <br>
-  <button class="btn-back">بازگشت به صفحه اصلی</button>
 </div>
 
 <!-- ===================== Grades page ===================== -->
 <div id="page-transcript" style="display:none;">
-  <h2>کارنامه</h2>
-  <table border="1" id="transcript-table">
-    <thead>
-      <tr><th>ترم</th><th>معدل ترم</th></tr>
-    </thead>
-    <tbody id="transcript-table-body">
-    </tbody>
-  </table>
-  <br>
-  <p>معدل تاکنون: <span id="transcript-overall-gpa"></span></p>
-  <br>
-  <button class="btn-back">بازگشت به صفحه اصلی</button>
+  <div class="page-card">
+    <h2>
+      <svg viewBox="0 0 24 24"><path d="M6 3.5h9l4 4V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"/><path d="M14.5 3.5V8h4.3"/><path d="M8.2 13h7.2M8.2 16.2h7.2"/></svg>
+      کارنامه
+    </h2>
+    <table border="1" id="transcript-table">
+      <thead>
+        <tr><th>ترم</th><th>معدل ترم</th></tr>
+      </thead>
+      <tbody id="transcript-table-body">
+      </tbody>
+    </table>
+
+    <div class="gpa-highlight">
+      <span>معدل تاکنون</span>
+      <span id="transcript-overall-gpa"></span>
+    </div>
+
+    <button class="btn-back">بازگشت به صفحه اصلی</button>
+  </div>
 </div>
 
 <script src="students.js"></script>
