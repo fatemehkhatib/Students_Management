@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سامانه مدیریت دانشجویان</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===================== Login (Authentication) Page ===================== -->
+<div id="page-login">
+  <h2>ورود دانشجو</h2>
+  <form id="login-form">
+    <div>
+      <label for="username">نام کاربری (شماره دانشجویی):</label>
+      <input type="text" id="username" required>
+    </div>
+    <div>
+      <label for="password">رمز عبور (شماره دانشجویی):</label>
+      <input type="password" id="password" required>
+    </div>
+    <button type="submit">ورود</button>
+    <p id="login-error" style="display:none;">نام کاربری یا رمز عبور اشتباه است. لطفاً دوباره تلاش کنید.</p>
+  </form>
+</div>
+
+<!-- ===================== Main Page (After Login) ===================== -->
+<div id="page-main" style="display:none;">
+  <h2>صفحه اصلی</h2>
+  <p>خوش آمدید، <span id="main-welcome-name"></span></p>
+  <button id="btn-goto-profile">مشخصات دانشجو</button>
+  <button id="btn-goto-units">واحد ها</button>
+  <button id="btn-goto-transcript">کارنامه</button>
+  <br><br>
+  <button id="btn-logout">خروج از حساب</button>
+</div>
+
+<!-- ===================== Student Profile Page ===================== -->
+<div id="page-profile" style="display:none;">
+  <h2>مشخصات دانشجو</h2>
+  <table border="1">
+    <tr><td>نام و نام خانوادگی</td><td id="profile-fullname"></td></tr>
+    <tr><td>رشته تحصیلی</td><td id="profile-major"></td></tr>
+    <tr><td>نوبت</td><td id="profile-shift"></td></tr>
+    <tr><td>شماره دانشجویی</td><td id="profile-id"></td></tr>
+  </table>
+  <br>
+  <button class="btn-back">بازگشت به صفحه اصلی</button>
+</div>
+
+<!-- ===================== Units page ===================== -->
+<div id="page-units" style="display:none;">
+  <h2>واحد ها</h2>
+  <table border="1" id="units-table">
+    <thead>
+      <tr><th>ترم</th><th>تعداد واحد گذرانده در این ترم</th></tr>
+    </thead>
+    <tbody id="units-table-body">
+    </tbody>
+  </table>
+  <br>
+  <div id="units-remaining-box">
+    <p>مجموع واحد گذرانده: <span id="units-passed-total"></span></p>
+    <p>واحد های باقی مانده: <span id="units-remaining"></span></p>
+  </div>
+  <br>
+  <button class="btn-back">بازگشت به صفحه اصلی</button>
+</div>
+
+<!-- ===================== Grades page ===================== -->
+<div id="page-transcript" style="display:none;">
+  <h2>کارنامه</h2>
+  <table border="1" id="transcript-table">
+    <thead>
+      <tr><th>ترم</th><th>معدل ترم</th></tr>
+    </thead>
+    <tbody id="transcript-table-body">
+    </tbody>
+  </table>
+  <br>
+  <p>معدل تاکنون: <span id="transcript-overall-gpa"></span></p>
+  <br>
+  <button class="btn-back">بازگشت به صفحه اصلی</button>
+</div>
+
+<script src="students.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
