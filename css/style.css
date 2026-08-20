@@ -1,0 +1,466 @@
+/* =========================================================
+   Student Management System — Carbon Blue Theme
+   ========================================================= */
+
+:root {
+  --bg-base: #0a0e13;
+  --bg-weave-1: #10151d;
+  --bg-weave-2: #141a23;
+
+  --panel-bg: rgba(19, 26, 36, 0.72);
+  --panel-bg-soft: rgba(19, 26, 36, 0.45);
+  --panel-border: rgba(90, 160, 255, 0.18);
+  --panel-border-strong: rgba(90, 160, 255, 0.35);
+
+  --blue-accent: #2f8fff;
+  --blue-accent-soft: #5fb2ff;
+  --blue-glow: #00d4ff;
+
+  --text-primary: #eaf2fb;
+  --text-secondary: #93a6bb;
+  --text-muted: #5c6b7d;
+
+  --danger: #ff5c6c;
+
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+
+  --font-heading: 'DigiLotos', 'Vazirmatn', Tahoma, sans-serif;
+  --font-body: 'DigiNazanin', 'Vazirmatn', Tahoma, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background-color: var(--bg-base);
+  background-image:
+    linear-gradient(27deg, var(--bg-weave-1) 5px, transparent 5px),
+    linear-gradient(207deg, var(--bg-weave-1) 5px, transparent 5px),
+    linear-gradient(27deg, var(--bg-weave-1) 5px, transparent 5px),
+    linear-gradient(207deg, var(--bg-weave-1) 5px, transparent 5px),
+    linear-gradient(90deg, var(--bg-weave-2) 10px, transparent 10px),
+    linear-gradient(var(--bg-weave-2) 25%, transparent 25%);
+  background-size: 24px 24px;
+  background-position: 0 2px, 4px 18px, 12px 14px, 16px 30px, 0 0, 0 0;
+  background-attachment: fixed;
+  direction: rtl;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% -10%, rgba(47, 143, 255, 0.16), transparent 45%),
+    radial-gradient(circle at 100% 110%, rgba(0, 212, 255, 0.10), transparent 40%);
+  z-index: 0;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-primary);
+  letter-spacing: 0.2px;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+table {
+  font-family: var(--font-body);
+}
+
+/* =========================================================
+   Shared page containers — everything centered
+   ========================================================= */
+
+#page-login,
+#page-main,
+#page-profile,
+#page-units,
+#page-transcript {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* =========================================================
+   Login page — minimal card
+   ========================================================= */
+
+#page-login h2 {
+  font-size: 26px;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+#login-form {
+  width: 100%;
+  max-width: 360px;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-lg);
+  padding: 36px 30px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.02) inset,
+    0 20px 50px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+#login-form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#login-form label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+#login-form input {
+  width: 100%;
+  padding: 12px 4px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--panel-border-strong);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+#login-form input::placeholder {
+  color: var(--text-muted);
+}
+
+#login-form input:focus {
+  border-bottom-color: var(--blue-glow);
+  box-shadow: 0 1px 0 0 var(--blue-glow);
+}
+
+#login-form button[type="submit"] {
+  margin-top: 6px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--blue-accent), var(--blue-glow));
+  color: #061018;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  transition: transform 0.15s ease, box-shadow 0.25s ease, filter 0.2s ease;
+  box-shadow: 0 8px 24px rgba(47, 143, 255, 0.35);
+}
+
+#login-form button[type="submit"]:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 10px 28px rgba(0, 212, 255, 0.45);
+}
+
+#login-form button[type="submit"]:active {
+  transform: translateY(1px);
+}
+
+#login-error {
+  margin-top: -6px;
+  font-size: 13px;
+  color: var(--danger);
+  text-align: center;
+}
+
+/* =========================================================
+   Main page — menu with 3 minimal icon cards
+   ========================================================= */
+
+#page-main {
+  gap: 40px;
+}
+
+#page-main h2 {
+  font-size: 24px;
+  text-align: center;
+}
+
+#page-main > p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  text-align: center;
+}
+
+#page-main > p #main-welcome-name {
+  color: var(--blue-accent-soft);
+  font-weight: 700;
+}
+
+.menu-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 22px;
+  width: 100%;
+  max-width: 760px;
+}
+
+.menu-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 200px;
+  padding: 30px 20px;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-lg);
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: 15px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.menu-card svg {
+  width: 34px;
+  height: 34px;
+  stroke: var(--blue-accent-soft);
+  fill: none;
+  stroke-width: 1.6;
+  transition: stroke 0.25s ease, filter 0.25s ease;
+}
+
+.menu-card:hover {
+  border-color: var(--panel-border-strong);
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0, 212, 255, 0.14);
+}
+
+.menu-card:hover svg {
+  stroke: var(--blue-glow);
+  filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.55));
+}
+
+#btn-logout {
+  margin-top: 6px;
+  padding: 10px 26px;
+  background: transparent;
+  border: 1px solid rgba(255, 92, 108, 0.35);
+  border-radius: var(--radius-sm);
+  color: var(--danger);
+  font-size: 13px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+#btn-logout:hover {
+  background: rgba(255, 92, 108, 0.08);
+  border-color: var(--danger);
+}
+
+/* =========================================================
+   Sub pages — profile / units / transcript
+   ========================================================= */
+
+.page-card {
+  width: 100%;
+  max-width: 560px;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-lg);
+  padding: 34px 32px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.page-card h2 {
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-card h2 svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--blue-accent-soft);
+  fill: none;
+  stroke-width: 1.6;
+}
+
+/* minimal tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+table, table tr, table td, table th {
+  border: none !important;
+}
+
+table thead th {
+  background: rgba(47, 143, 255, 0.10);
+  color: var(--blue-accent-soft);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 12px 14px;
+  text-align: center;
+  border-bottom: 1px solid var(--panel-border-strong) !important;
+}
+
+table tbody td,
+table tr td {
+  padding: 12px 14px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-primary);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+table tr:last-child td {
+  border-bottom: none !important;
+}
+
+table tbody tr:nth-child(even),
+table tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* profile table: label / value rows */
+#page-profile table td:first-child {
+  color: var(--text-secondary);
+  text-align: right;
+  font-size: 13px;
+  width: 45%;
+}
+
+#page-profile table td:last-child {
+  color: var(--text-primary);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* remaining units box */
+#units-remaining-box {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+#units-remaining-box p {
+  flex: 1 1 200px;
+  text-align: center;
+  background: var(--panel-bg-soft);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-md);
+  padding: 14px 10px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+#units-passed-total,
+#units-remaining {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-heading);
+  font-size: 20px;
+  color: var(--blue-glow);
+}
+
+/* overall gpa highlight box on transcript page */
+.gpa-highlight {
+  text-align: center;
+  background: var(--panel-bg-soft);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-md);
+  padding: 16px 24px;
+  width: 100%;
+}
+
+.gpa-highlight span:first-child {
+  display: block;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+#transcript-overall-gpa {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  color: var(--blue-glow);
+}
+
+/* back button */
+.btn-back {
+  margin-top: 4px;
+  padding: 10px 28px;
+  background: transparent;
+  border: 1px solid var(--panel-border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.btn-back:hover {
+  color: var(--blue-accent-soft);
+  border-color: var(--blue-accent);
+  background: rgba(47, 143, 255, 0.06);
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .menu-card {
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .page-card,
+  #login-form {
+    padding: 26px 20px;
+  }
+}
