@@ -21,7 +21,7 @@ function hideAllPages() {
 
 function showPage(pageId) {
   hideAllPages();
-  document.getElementById(pageId).style.display = 'block';
+  document.getElementById(pageId).style.display = 'flex';
 }
 
 // ===================== Authentication =====================
